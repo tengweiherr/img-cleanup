@@ -42,7 +42,6 @@ async function loadIgnorePatterns(projectRoot: string): Promise<string[]> {
 
     console.log(chalk.gray(`Ignoring patterns from ${configFilePath}`));
   } catch (err) {
-    console.warn(chalk.red(`Failed to load config file at ${configFilePath}`));
     // Skip if it fails
   }
 

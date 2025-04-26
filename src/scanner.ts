@@ -13,11 +13,21 @@ export async function scanForUnusedImages(
   const assetsPath = path.resolve(projectRoot, assetsFolder);
 
   const imageFiles = await findFiles(assetsPath, SUPPORTED_IMAGES, ignorePatterns);
+
+  if (imageFiles.length === 0) {
+    return [];
+  }
+
   const sourceFiles = await findFiles(projectRoot, SOURCE_EXTENSIONS, ignorePatterns);
+
+  if (sourceFiles.length === 0) {
+    return imageFiles;
+  }
 
   const allContent = await Promise.all(
     sourceFiles.map(file => fs.readFile(file, 'utf-8'))
   );
+
   const combinedContent = allContent.join('\n');
 
   const usedImages = new Set<string>();
