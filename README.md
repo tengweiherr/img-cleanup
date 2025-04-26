@@ -34,6 +34,7 @@ npx img-cleanup --help
 
 ## Caveats
 - It doesn't recognize path aliases in TypeScript yet
+- It doesn't differentiate files with the same name from different folders
 
 ## License
 
