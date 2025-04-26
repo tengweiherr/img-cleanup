@@ -1,17 +1,10 @@
 {
-  "name": "@tengweiherr/img-cleanup",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tengweiherr/img-cleanup.git"
-  },
+  "name": "img-cleanup",
+  "author": "Teng Wei Herr",
+  "license": "MIT",
   "version": "1.0.0",
-  "private": true,
   "description": "CLI tool to detect and remove unused images in JS/TS/HTML projects",
   "main": "dist/cli.js",
-  "types": "dist/cli.d.ts",
   "files": ["dist"],
   "bin": {
     "img-cleanup": "./dist/cli.js"
@@ -26,11 +19,8 @@
     "images",
     "cleanup",
     "unused",
-    "assets",
-    "optimization"
+    "assets"
   ],
-  "author": "Teng Wei Herr",
-  "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^11.0.0",
@@ -45,5 +35,9 @@
     "ts-node": "^10.9.1",
     "tsup": "^8.4.0",
     "typescript": "^5.1.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tengweiherr/img-cleanup.git"
   }
 }
