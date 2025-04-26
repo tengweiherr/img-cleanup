@@ -13,6 +13,12 @@
     "build": "tsup-node src/cli.ts",
     "start": "node dist/cli.js",
     "dev": "ts-node src/cli.ts",
+    "bump:patch": "npm version patch",
+    "bump:minor": "npm version minor",
+    "bump:major": "npm version major",
+    "publish:patch": "npm run build && npm run bump:patch && npm publish",
+    "publish:minor": "npm run build && npm run bump:minor && npm publish",
+    "publish:major": "npm run build && npm run bump:major && npm publish",
     "test": "jest"
   },
   "keywords": [
