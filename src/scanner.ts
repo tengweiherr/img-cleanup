@@ -1,7 +1,6 @@
 import { glob } from 'glob';
 import * as fs from 'fs/promises';
 import * as path from 'path';
-import { PathResolver } from './path-resolver';
 
 const SUPPORTED_IMAGES = ['.png', '.jpg', '.jpeg', '.svg', '.gif', '.webp', '.avif', '.apng'];
 const SOURCE_EXTENSIONS = ['.js', '.jsx', '.ts', '.tsx', '.html', '.css', '.scss'];
@@ -39,4 +38,3 @@ async function findFiles(directory: string, extensions: string[], ignorePatterns
   const pattern = `${directory}/**/*.{${extPattern}}`;
   return glob(pattern, { nodir: true, ignore: ignorePatterns });
 }
-
