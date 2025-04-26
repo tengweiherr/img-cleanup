@@ -68,9 +68,15 @@ async function main() {
       console.log(chalk.yellow(`- ${image}`));
     });
 
-    if (!options.dryRun) {
+    if (options.dryRun) {
       // TODO: Implement actual deletion
       console.log(chalk.red('\nTo delete these files, run without --dry-run flag'));
+    } else {
+      console.log('\nDeleting unused images...');
+      for (const image of unusedImages) {
+        await fs.unlink(image);
+      }
+      console.log(chalk.green('\n✓ Unused images deleted successfully'));
     }
   } catch (error) {
     console.error(chalk.red('Error:', (error as Error).message));
