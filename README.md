@@ -11,7 +11,7 @@ A CLI tool to detect and remove unused images in JavaScript, TypeScript, and HTM
 npx img-cleanup src/assets
 
 # Dry run (show what would be deleted without actually deleting)
-npx img-cleanup src/assets --dry-run
+npx img-cleanup src/assets -d
 
 # With ignore patterns
 npx img-cleanup src/assets -i "**/*.test.tsx"
