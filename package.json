@@ -2,10 +2,12 @@
   "name": "img-cleanup",
   "author": "Teng Wei Herr",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI tool to detect and remove unused images in JS/TS/HTML projects",
   "main": "dist/cli.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "bin": {
     "img-cleanup": "./dist/cli.js"
   },
