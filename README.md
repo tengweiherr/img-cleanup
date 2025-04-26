@@ -6,7 +6,7 @@ A CLI tool to detect and remove unused images in JavaScript, TypeScript, and HTM
 
 ```bash
 # Install globally
-npm install -g img-cleanup
+pnpm install img-cleanup
 
 # Or use with npx
 npx img-cleanup
@@ -15,14 +15,14 @@ npx img-cleanup
 ## Usage
 
 ```bash
-# Scan a specific folder
+# Scan a specific folder, it will run against the current working directory
 img-cleanup src/assets
 
-# Dry run (show what would be deleted)
+# Dry run (show what would be deleted without actually deleting)
 img-cleanup src/assets --dry-run
 
 # With ignore patterns
-img-cleanup src/assets -i "**/*.test.js" "vendor/**"
+img-cleanup src/assets -i "**/*.test.tsx"
 
 # Show help
 img-cleanup --help
@@ -38,6 +38,10 @@ img-cleanup --help
   - HTML img tags
   - CSS/SCSS background images
   - Node.js fs operations
+- Smart enough to ignore commented out code
+
+## Caveats
+- It doesn't recognize path aliases in TypeScript yet
 
 ## License
 

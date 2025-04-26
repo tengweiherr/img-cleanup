@@ -3,7 +3,7 @@ import * as fs from 'fs/promises';
 import * as path from 'path';
 
 const SUPPORTED_IMAGES = ['.png', '.jpg', '.jpeg', '.svg', '.gif', '.webp', '.avif', '.apng'];
-const SOURCE_EXTENSIONS = ['.js', '.jsx', '.ts', '.tsx', '.html', '.css', '.scss'];
+const SOURCE_EXTENSIONS = ['.js', '.jsx', '.ts', '.tsx', '.html', '.css', '.scss', '.vue', '.svelte'];
 
 export async function scanForUnusedImages(
   assetsFolder: string,
@@ -28,13 +28,17 @@ export async function scanForUnusedImages(
     sourceFiles.map(file => fs.readFile(file, 'utf-8'))
   );
 
+  // Combine all source code into one big string
   const combinedContent = allContent.join('\n');
+
+  // Before searching, remove comments first
+  const contentWithoutComments = stripComments(combinedContent);
 
   const usedImages = new Set<string>();
 
   for (const image of imageFiles) {
     const basename = path.basename(image);
-    if (combinedContent.includes(basename)) {
+    if (contentWithoutComments.includes(basename)) {
       usedImages.add(image);
     }
   }
@@ -47,4 +51,15 @@ async function findFiles(directory: string, extensions: string[], ignorePatterns
   const extPattern = extensions.map(ext => ext.replace('.', '')).join(',');
   const pattern = `${directory}/**/*.{${extPattern}}`;
   return glob(pattern, { nodir: true, ignore: ignorePatterns });
+}
+
+// Remove all comments from source code
+function stripComments(content: string): string {
+  return content
+    // Remove multiline comments first (/* */)
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    // Remove single-line comments (//)
+    .replace(/\/\/.*$/gm, '')
+    // Remove HTML comments (<!-- -->)
+    .replace(/<!--[\s\S]*?-->/g, '');
 }
