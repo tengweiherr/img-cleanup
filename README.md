@@ -4,30 +4,20 @@ I got tired of checking for unused images as they piled up, so I built a CLI too
 
 A CLI tool to detect and remove unused images in JavaScript, TypeScript, and HTML projects.
 
-## Installation
-
-```bash
-# Install globally
-pnpm install img-cleanup
-
-# Or use with npx
-npx img-cleanup
-```
-
 ## Usage
 
 ```bash
 # Scan a specific folder, it will run against the current working directory
-img-cleanup src/assets
+npx img-cleanup src/assets
 
 # Dry run (show what would be deleted without actually deleting)
-img-cleanup src/assets --dry-run
+npx img-cleanup src/assets --dry-run
 
 # With ignore patterns
-img-cleanup src/assets -i "**/*.test.tsx"
+npx img-cleanup src/assets -i "**/*.test.tsx"
 
 # Show help
-img-cleanup --help
+npx img-cleanup --help
 ```
 
 ## Features
