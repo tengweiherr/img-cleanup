@@ -1,6 +1,6 @@
 I got tired of checking for unused images as they piled up, so I built a CLI tool to detect and get rid of them.
 
-# img-cleanup
+# 🏞️ img-cleanup 🧹
 
 A CLI tool to detect and remove unused images in JavaScript, TypeScript, and HTML projects.
 
