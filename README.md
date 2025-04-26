@@ -22,8 +22,8 @@ npx img-cleanup --help
 
 ## Features
 
-- Detects unused images in .js, .jsx, .ts, .tsx, .html, .css, .scss, .vue, .svelte
-- Supports multiple image formats (png, jpg, jpeg, svg, gif, webp, avif, apng)
+- Detects unused images in `.js`, `.jsx`, `.ts`, `.tsx`, `.html`, `.css`, `.scss`, `.vue`, `.svelte`
+- Supports multiple image formats (`png`, `jpg`, `jpeg`, `svg`, `gif`, `webp`, `avif`, `apng`)
 - Scans for various import patterns:
   - ES6 imports
   - require() statements
