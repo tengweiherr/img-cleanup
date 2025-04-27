@@ -8,7 +8,7 @@ A CLI tool to detect and remove unused images in your project.
 https://github.com/user-attachments/assets/e16bec33-167a-41b6-89af-668debf962b1
 
 
-## Warning
+## ⚠️ Warning
 Important:
 Only use this tool inside your own project repositories.
 Do not run this on system folders, external drives, or outside of your intended project —
