@@ -8,16 +8,22 @@ A CLI tool to detect and remove unused images in your project.
 https://github.com/user-attachments/assets/e16bec33-167a-41b6-89af-668debf962b1
 
 
+## Warning
+Important:
+Only use this tool inside your own project repositories.
+Do not run this on system folders, external drives, or outside of your intended project —
+it may detect and delete images based on filename matches.
+
 ## Usage
 
 ```bash
-# Scan a specific folder, it will run against the current working directory
+# Scan a specific folder (relative to the current working directory) and print unused images without deleting anything
 npx img-cleanup src/assets
 
-# Dry run (show what would be deleted without actually deleting)
-npx img-cleanup src/assets -d
+# Actually remove unused images
+npx img-cleanup src/assets -r
 
-# With ignore patterns
+# Ignore specific patterns
 npx img-cleanup src/assets -i "**/*.test.tsx"
 
 # Show help
@@ -56,7 +62,7 @@ You can also create an `.imgcleanupignore` file in the root of your project to s
 
 ## Caveats
 
-- It doesn't recognize path aliases in TypeScript yet
+- It does not resolve TypeScript path aliases (like @/assets/logo.png).
 - It doesn't differentiate files with the same name from different folders
 
 ## License
