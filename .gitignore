@@ -3,3 +3,9 @@ node_modules/
 
 # Build output
 dist/
+
+# Test data
+__testdata__
+
+# CLI test data
+__cli_testdata__
