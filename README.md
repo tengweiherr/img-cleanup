@@ -35,7 +35,6 @@ npx img-cleanup --help
 ## Caveats
 - It doesn't recognize path aliases in TypeScript yet
 - It doesn't differentiate files with the same name from different folders
-- It doesn't recognize image loaded via Next.js's [custom loader](https://nextjs.org/docs/app/api-reference/components/image#loader)
 
 ## License
 
