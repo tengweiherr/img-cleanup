@@ -20,6 +20,14 @@ npx img-cleanup src/assets -i "**/*.test.tsx"
 npx img-cleanup --help
 ```
 
+Supported extensions
+
+- `.js`, `.jsx`, `.ts`, `.tsx`, `.html`, `.css`, `.scss`, `.vue`, `.svelte`, `.md`, `.mdx`, `.json`, `.yaml`, `.yml`, `.txt`
+
+Supported image formats
+
+- `.png`, `.jpg`, `.jpeg`, `.svg`, `.gif`, `.webp`, `.avif`, `.apng`
+
 ## How it works
 
 1. Scans the specified assets folder for all supported image files
@@ -41,18 +49,6 @@ You can also create an `.imgcleanupignore` file in the root of your project to s
 # .imgcleanupignore
 **/*.test.tsx
 ```
-
-## Features
-
-- Detects unused static local images in `.js`, `.jsx`, `.ts`, `.tsx`, `.html`, `.css`, `.scss`, `.vue`, `.svelte`, `.md`, `.mdx`, `.json`, `.yaml`, `.yml`, `.txt`
-- Supports multiple image formats (`png`, `jpg`, `jpeg`, `svg`, `gif`, `webp`, `avif`, `apng`)
-- Scans for various import patterns:
-  - ES6 imports
-  - require() statements
-  - HTML img tags
-  - CSS/SCSS background images
-  - Node.js fs operations
-- Smart enough to ignore commented out code
 
 ## Caveats
 
