@@ -20,11 +20,11 @@ npx img-cleanup src/assets -i "**/*.test.tsx"
 npx img-cleanup --help
 ```
 
-Supported extensions
+## Supported extensions
 
 - `.js`, `.jsx`, `.ts`, `.tsx`, `.html`, `.css`, `.scss`, `.vue`, `.svelte`, `.md`, `.mdx`, `.json`, `.yaml`, `.yml`, `.txt`
 
-Supported image formats
+## Supported image formats
 
 - `.png`, `.jpg`, `.jpeg`, `.svg`, `.gif`, `.webp`, `.avif`, `.apng`
 
