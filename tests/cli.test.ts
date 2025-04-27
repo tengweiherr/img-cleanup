@@ -8,7 +8,7 @@ const execAsync = util.promisify(exec);
 const TEST_DIR = path.join(__dirname, '__cli_testdata__');
 const CLI_PATH = path.join(__dirname, '../src/cli.ts');
 
-describe('img-cleanup CLI', () => {
+describe('purge-img CLI', () => {
   beforeEach(async () => {
     // Clean up and recreate test directory before each test
     await fs.rm(TEST_DIR, { recursive: true, force: true });

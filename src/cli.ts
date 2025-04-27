@@ -9,7 +9,7 @@ import { scanForUnusedImages } from './scanner';
 const program = new Command();
 
 program
-  .name('img-cleanup')
+  .name('purge-img')
   .description('CLI tool to detect and remove unused images in your project')
   .argument('<path>', 'Path to the assets folder to scan')
   .option('-r, --remove', 'Actually delete the unused images after detection', false)

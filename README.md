@@ -1,6 +1,6 @@
 I got tired of checking for unused images as they piled up, so I built a CLI tool to detect and get rid of them.
 
-# 🏞️ img-cleanup 🧹
+# 🏞️ purge-img 🧹
 
 A CLI tool to detect and remove unused images in your project.
 
@@ -18,16 +18,16 @@ it may detect and delete images based on filename matches.
 
 ```bash
 # Scan a specific folder (relative to the current working directory) and print unused images without deleting anything
-npx img-cleanup src/assets
+npx purge-img src/assets
 
 # Actually remove unused images
-npx img-cleanup src/assets -r
+npx purge-img src/assets -r
 
 # Ignore specific patterns
-npx img-cleanup src/assets -i "**/*.test.tsx"
+npx purge-img src/assets -i "**/*.test.tsx"
 
 # Show help
-npx img-cleanup --help
+npx purge-img --help
 ```
 
 ## Supported extensions
@@ -50,7 +50,7 @@ npx img-cleanup --help
 You can use the `-i` or `--ignore` flag to specify patterns to ignore. You can specify multiple patterns by using the flag multiple times.
 
 ```bash
-npx img-cleanup src/assets -i "**/*.test.tsx"
+npx purge-img src/assets -i "**/*.test.tsx"
 ```
 
 You can also create an `.imgcleanupignore` file in the root of your project to specify patterns to ignore.
