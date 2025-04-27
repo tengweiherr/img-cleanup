@@ -3,7 +3,12 @@ import * as fs from 'fs/promises';
 import * as path from 'path';
 
 const SUPPORTED_IMAGES = ['.png', '.jpg', '.jpeg', '.svg', '.gif', '.webp', '.avif', '.apng'];
-const SOURCE_EXTENSIONS = ['.js', '.jsx', '.ts', '.tsx', '.html', '.css', '.scss', '.vue', '.svelte'];
+const SOURCE_EXTENSIONS = [
+  '.js', '.jsx', '.ts', '.tsx', 
+  '.html', '.css', '.scss', 
+  '.vue', '.svelte', 
+  '.md', '.mdx', '.json', '.yaml', '.yml', '.txt'
+];
 
 export async function scanForUnusedImages(
   assetsFolder: string,
