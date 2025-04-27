@@ -1,6 +1,6 @@
 I got tired of checking for unused images as they piled up, so I built a CLI tool to detect and get rid of them.
 
-# 🏞️ purge-img 🧹
+# 🏞️ Purge IMG 🧹
 
 A CLI tool to detect and remove unused images in your project.
 
