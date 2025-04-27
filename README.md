@@ -53,10 +53,10 @@ You can use the `-i` or `--ignore` flag to specify patterns to ignore. You can s
 npx purge-img src/assets -i "**/*.test.tsx"
 ```
 
-You can also create an `.imgcleanupignore` file in the root of your project to specify patterns to ignore.
+You can also create an `.purgeimgignore` file in the root of your project to specify patterns to ignore.
 
 ```bash
-# .imgcleanupignore
+# .purgeimgignore
 **/*.test.tsx
 ```
 

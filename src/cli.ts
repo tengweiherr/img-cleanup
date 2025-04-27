@@ -26,7 +26,7 @@ async function loadIgnorePatterns(projectRoot: string): Promise<string[]> {
     ignorePatterns.push(...options.ignore);
   }
 
-  const configFilePath = path.resolve(projectRoot, '.imgcleanupignore');
+  const configFilePath = path.resolve(projectRoot, '.purgeimgignore');
 
   try {
     const content = await fs.readFile(configFilePath, 'utf-8');
