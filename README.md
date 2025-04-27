@@ -4,6 +4,8 @@ I got tired of checking for unused images as they piled up, so I built a CLI too
 
 A CLI tool to detect and remove unused images in your project.
 
+https://github.com/user-attachments/assets/e16bec33-167a-41b6-89af-668debf962b1
+
 ## Usage
 
 ```bash
