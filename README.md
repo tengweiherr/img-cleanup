@@ -22,7 +22,7 @@ npx img-cleanup --help
 
 ## Features
 
-- Detects unused images in `.js`, `.jsx`, `.ts`, `.tsx`, `.html`, `.css`, `.scss`, `.vue`, `.svelte`
+- Detects unused static local images in `.js`, `.jsx`, `.ts`, `.tsx`, `.html`, `.css`, `.scss`, `.vue`, `.svelte`
 - Supports multiple image formats (`png`, `jpg`, `jpeg`, `svg`, `gif`, `webp`, `avif`, `apng`)
 - Scans for various import patterns:
   - ES6 imports
@@ -33,6 +33,7 @@ npx img-cleanup --help
 - Smart enough to ignore commented out code
 
 ## Caveats
+
 - It doesn't recognize path aliases in TypeScript yet
 - It doesn't differentiate files with the same name from different folders
 
