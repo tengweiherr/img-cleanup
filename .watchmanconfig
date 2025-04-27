@@ -1,0 +1,11 @@
+{
+  "ignore_dirs": [
+    "node_modules",
+    "dist",
+    "build",
+    ".next",
+    "out",
+    "coverage",
+    "__testdata__"
+  ]
+}
