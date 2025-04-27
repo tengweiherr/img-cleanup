@@ -62,7 +62,6 @@ You can also create an `.purgeimgignore` file in the root of your project to spe
 
 ## Caveats
 
-- It does not resolve TypeScript path aliases (like @/assets/logo.png).
 - It doesn't differentiate files with the same name from different folders
 
 ## License
