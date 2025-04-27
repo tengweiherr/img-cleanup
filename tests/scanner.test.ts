@@ -2,23 +2,22 @@ import * as fs from 'fs/promises';
 import * as path from 'path';
 import { scanForUnusedImages } from '../src/scanner';
 
-const TEST_DIR = path.join(__dirname, '__testdata__');
-
-beforeAll(async () => {
-  await fs.mkdir(TEST_DIR, { recursive: true });
-
-  // Create test assets
-  await fs.mkdir(path.join(TEST_DIR, 'assets'), { recursive: true });
-  await fs.writeFile(path.join(TEST_DIR, 'assets', 'used-image.svg'), 'fakeimg');
-  await fs.writeFile(path.join(TEST_DIR, 'assets', 'unused-image.svg'), 'fakeimg');
-});
-
-afterAll(async () => {
-  // Cleanup after tests
-  await fs.rm(TEST_DIR, { recursive: true, force: true });
-});
+const TEST_DIR = path.join(__dirname, '__scanner_testdata__');
 
 describe('scanForUnusedImages', () => {
+  beforeEach(async () => {
+    await fs.rm(TEST_DIR, { recursive: true, force: true });
+    await fs.mkdir(TEST_DIR, { recursive: true });
+  
+    await fs.mkdir(path.join(TEST_DIR, 'assets'), { recursive: true });
+    await fs.writeFile(path.join(TEST_DIR, 'assets', 'used-image.svg'), 'fakeimg');
+    await fs.writeFile(path.join(TEST_DIR, 'assets', 'unused-image.svg'), 'fakeimg');
+  });
+
+  afterAll(async () => {
+    await fs.rm(TEST_DIR, { recursive: true, force: true });
+  });
+
   it('HTML: should detect unused images with src', async () => {
     await fs.writeFile(path.join(TEST_DIR, 'index.html'), `
       <html>
@@ -62,6 +61,16 @@ describe('scanForUnusedImages', () => {
     await fs.writeFile(path.join(TEST_DIR, 'index.tsx'), `
       import { Image } from 'next/image';
       <Image src="/assets/used-image.svg" alt="Used" />
+    `);
+
+    const unusedImages = await scanForUnusedImages('assets', [], TEST_DIR);
+  
+    expect(unusedImages).toHaveLength(1);
+  });
+
+  it('Next.js Image: should detect imported but unused images as used', async () => {
+    await fs.writeFile(path.join(TEST_DIR, 'index.tsx'), `
+      import UsedImage from '/assets/used-image.svg';
     `);
 
     const unusedImages = await scanForUnusedImages('assets', [], TEST_DIR);

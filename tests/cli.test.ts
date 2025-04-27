@@ -3,14 +3,16 @@ import * as fs from 'fs/promises';
 import * as path from 'path';
 import util from 'util';
 
+jest.setTimeout(15000); // Increase Jest timeout for CLI tests
+
 const execAsync = util.promisify(exec);
 
 const TEST_DIR = path.join(__dirname, '__cli_testdata__');
 const CLI_PATH = path.join(__dirname, '../src/cli.ts');
 
-describe('purge-img CLI', () => {
+describe('img-cleanup CLI', () => {
   beforeEach(async () => {
-    // Clean up and recreate test directory before each test
+    // Reset the test directory before each test
     await fs.rm(TEST_DIR, { recursive: true, force: true });
     await fs.mkdir(TEST_DIR, { recursive: true });
 
@@ -28,12 +30,12 @@ describe('purge-img CLI', () => {
   });
 
   afterAll(async () => {
-    // Clean up after all tests
+    // Final cleanup after all tests
     await fs.rm(TEST_DIR, { recursive: true, force: true });
   });
 
-  it('should detect and print unused images (no removal)', async () => {
-    const { stdout } = await execAsync(`npx tsx ${CLI_PATH} assets`, {
+  it('should detect and print unused images (without removing)', async () => {
+    const { stdout } = await execAsync(`npx tsx "${CLI_PATH}" assets`, {
       cwd: TEST_DIR,
     });
 
@@ -42,27 +44,26 @@ describe('purge-img CLI', () => {
     expect(stdout).toContain('Run again with --remove flag to actually delete these files');
   });
 
-  it('should delete unused images when --remove is passed', async () => {
+  it('should delete unused images when --remove flag is used', async () => {
     const unusedFile = path.join(TEST_DIR, 'assets', 'unused.png');
-    await expect(fs.access(unusedFile)).resolves.toBeUndefined();
+    await expect(fs.access(unusedFile)).resolves.toBeUndefined(); // unused.png exists initially
 
-    const { stdout } = await execAsync(`npx tsx ${CLI_PATH} assets --remove`, {
+    const { stdout } = await execAsync(`npx tsx "${CLI_PATH}" assets --remove`, {
       cwd: TEST_DIR,
     });
 
     expect(stdout).toContain('Deleting unused images');
     expect(stdout).toContain('✓ Unused images deleted successfully');
 
-    // After deletion, the file should not exist
-    await expect(fs.access(unusedFile)).rejects.toThrow();
+    await expect(fs.access(unusedFile)).rejects.toThrow(); // should be deleted
   });
 
-  it('should ignore specified patterns and detect both images unused', async () => {
-    const { stdout } = await execAsync(`npx tsx ${CLI_PATH} assets -i "**/*.html"`, {
+  it('should ignore specified patterns', async () => {
+    const { stdout } = await execAsync(`npx tsx "${CLI_PATH}" assets -i "**/*.html"`, {
       cwd: TEST_DIR,
     });
 
-    // Because we ignored HTML files, no references are found, so both images unused
+    // Since we ignore the HTML file, no image is seen as used anymore
     expect(stdout).toContain('Found 2 unused images');
     expect(stdout).toContain('used.png');
     expect(stdout).toContain('unused.png');
